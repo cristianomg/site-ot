@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Dungeon Souls</title>
+    
+    <!-- Google Fonts para tema medieval -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/OtServer.Web.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand glow" asp-area="" asp-page="/Index">💀 Dungeon Souls 💀</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/Index">🏴 Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/Highscores">⚔️ Highscores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="alert('Em breve!')">👥 Players Online</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="alert('Em breve!')">🔥 Last Kills</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="alert('Em breve!')">📜 Rules</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="alert('Em breve!')">💎 Donate</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-primary dragon-devour-btn" href="#" onclick="alert('Sistema de login em breve!')">👁 Entrar nas Trevas</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <div class="medieval-divider"></div>
+
+    <footer>
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <h5>💀 Dungeon Souls 💀</h5>
+                    <p>O reino sombrio mais poderoso de todas as masmorras!</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>🔥 Status das Trevas</h5>
+                    <p class="text-danger">🔴 Torre Negra Ativa</p>
+                    <p>Servos: <strong class="glow">127</strong></p>
+                </div>
+                <div class="col-md-4">
+                    <h5>⚡ Portais Sombrios</h5>
+                    <p>
+                        <a href="#" onclick="alert('Em breve!')">Download das Trevas</a><br>
+                        <a href="#" onclick="alert('Em breve!')">Conselho Sombrio</a><br>
+                        <a href="#" onclick="alert('Em breve!')">Arquivos de Mordor</a>
+                    </p>
+                </div>
+            </div>
+            <hr style="border-color: #ff6b47; margin: 2rem 0;">
+            <div class="text-center">
+                <p>&copy; 2025 - Dungeon Souls - Todos os direitos reservados às almas das masmorras</p>
+                <p><small>Onde as almas são forjadas nas trevas - Entre por sua conta e risco</small></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

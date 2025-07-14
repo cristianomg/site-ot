@@ -1,0 +1,400 @@
+@page
+@model HighscoresModel
+@{
+    ViewData["Title"] = "Highscores das Trevas";
+    var rankingTitle = Model.CurrentRankingType switch 
+    {
+        RankingType.Level => "⭐ Level & Resets",
+        RankingType.MagicLevel => "🔮 Magic Level", 
+        RankingType.First => "🛡️ First Fighting",
+        RankingType.Sword => "⚔️ Sword Fighting",
+        RankingType.Distance => "🏹 Distance Fighting", 
+        RankingType.Axe => "🪓 Axe Fighting",
+        RankingType.Club => "🔨 Club Fighting",
+        _ => "⭐ Level & Resets"
+    };
+}
+
+<div class="text-center mb-4">
+    <h1 class="glow">⚔️ Highscores das Trevas ⚔️</h1>
+    <p class="lead" style="font-size: 1.3rem; color: #ff6b47;">As almas mais poderosas das masmorras sombrias!</p>
+    <p style="color: #ff6b47; font-style: italic;">"@rankingTitle - Apenas os mais corrompidos chegam ao topo..."</p>
+</div>
+
+<div class="row">
+    <!-- Sidebar de Rankings -->
+    <div class="col-lg-3 col-md-4 mb-4">
+        <div class="card ranking-sidebar">
+            <div class="card-header">
+                <h5>💀 Tipos de Ranking</h5>
+                <small class="text-muted">Escolha sua categoria sombria</small>
+            </div>
+            <div class="card-body p-2">
+                <div class="list-group list-group-flush">
+                    <a href="?type=level&page=1" class="list-group-item @(Model.CurrentRankingType == RankingType.Level ? "active" : "")">
+                        <div class="d-flex align-items-center">
+                            <span class="me-2">⭐</span>
+                            <div>
+                                <div class="fw-bold">Level & Resets</div>
+                                <small class="text-muted">Poder total das almas</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="?type=magiclevel&page=1" class="list-group-item @(Model.CurrentRankingType == RankingType.MagicLevel ? "active" : "")">
+                        <div class="d-flex align-items-center">
+                            <span class="me-2">🔮</span>
+                            <div>
+                                <div class="fw-bold">Magic Level</div>
+                                <small class="text-muted">Poder arcano sombrio</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="?type=first&page=1" class="list-group-item @(Model.CurrentRankingType == RankingType.First ? "active" : "")">
+                        <div class="d-flex align-items-center">
+                            <span class="me-2">🛡️</span>
+                            <div>
+                                <div class="fw-bold">First Fighting</div>
+                                <small class="text-muted">Combate sem armas</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="?type=sword&page=1" class="list-group-item @(Model.CurrentRankingType == RankingType.Sword ? "active" : "")">
+                        <div class="d-flex align-items-center">
+                            <span class="me-2">⚔️</span>
+                            <div>
+                                <div class="fw-bold">Sword Fighting</div>
+                                <small class="text-muted">Mestres da lâmina</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="?type=distance&page=1" class="list-group-item @(Model.CurrentRankingType == RankingType.Distance ? "active" : "")">
+                        <div class="d-flex align-items-center">
+                            <span class="me-2">🏹</span>
+                            <div>
+                                <div class="fw-bold">Distance Fighting</div>
+                                <small class="text-muted">Arqueiros das trevas</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="?type=axe&page=1" class="list-group-item @(Model.CurrentRankingType == RankingType.Axe ? "active" : "")">
+                        <div class="d-flex align-items-center">
+                            <span class="me-2">🪓</span>
+                            <div>
+                                <div class="fw-bold">Axe Fighting</div>
+                                <small class="text-muted">Guerreiros do machado</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="?type=club&page=1" class="list-group-item @(Model.CurrentRankingType == RankingType.Club ? "active" : "")">
+                        <div class="d-flex align-items-center">
+                            <span class="me-2">🔨</span>
+                            <div>
+                                <div class="fw-bold">Club Fighting</div>
+                                <small class="text-muted">Mestres do martelo</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Área principal da tabela -->
+    <div class="col-lg-9 col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3>💀 Ranking das Almas Perdidas</h3>
+                <p class="mb-0 text-muted">
+                    <small>
+                        Última atualização: @DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")
+                        | Total de almas: @Model.TotalPlayers
+                        | Página @Model.CurrentPage de @Model.TotalPages
+                        | Mostrando @Model.Players.Count almas
+                    </small>
+                </p>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th style="width: 60px; text-align: center;">
+                                    <span class="text-warning">#</span>
+                                </th>
+                                <th style="width: 200px;">
+                                    <span class="text-warning">👤 Nome</span>
+                                </th>
+                                <th style="width: 150px;">
+                                    <span class="text-warning">🎭 Vocação</span>
+                                </th>
+                                @if (Model.CurrentRankingType == RankingType.Level)
+                                {
+                                    <th style="width: 100px; text-align: center;">
+                                        <span class="text-warning">🔄 Resets</span>
+                                    </th>
+                                    <th style="width: 100px; text-align: center;">
+                                        <span class="text-warning">⭐ Level</span>
+                                    </th>
+                                    <th style="text-align: right;">
+                                        <span class="text-warning">💎 Experience</span>
+                                    </th>
+                                }
+                                else
+                                {
+                                    <th style="width: 100px; text-align: center;">
+                                        <span class="text-warning">⭐ Level</span>
+                                    </th>
+                                    <th style="width: 120px; text-align: center;">
+                                        @{
+                                            var skillHeader = Model.CurrentRankingType switch 
+                                            {
+                                                RankingType.MagicLevel => "🔮 Magic Level",
+                                                RankingType.First => "🛡️ First Skill",
+                                                RankingType.Sword => "⚔️ Sword Skill", 
+                                                RankingType.Distance => "🏹 Distance Skill",
+                                                RankingType.Axe => "🪓 Axe Skill",
+                                                RankingType.Club => "🔨 Club Skill",
+                                                _ => "Skill"
+                                            };
+                                        }
+                                        <span class="text-warning">@skillHeader</span>
+                                    </th>
+                                    <th style="text-align: right;">
+                                        <span class="text-warning">💎 Experience</span>
+                                    </th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var player in Model.Players)
+                            {
+                                <tr>
+                                    <td style="text-align: center;">
+                                        @if (player.Position == 1)
+                                        {
+                                            <span class="badge bg-warning text-dark">🥇 @player.Position</span>
+                                        }
+                                        else if (player.Position == 2)
+                                        {
+                                            <span class="badge bg-secondary">🥈 @player.Position</span>
+                                        }
+                                        else if (player.Position == 3)
+                                        {
+                                            <span class="badge bg-warning text-dark" style="background: #cd7f32 !important;">🥉 @player.Position</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted">@player.Position</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <strong class="text-warning">@player.Name</strong>
+                                    </td>
+                                    <td>
+                                        @switch (player.Vocation)
+                                        {
+                                            case "Elite Knight":
+                                                <span class="text-info">⚔️ @player.Vocation</span>
+                                                break;
+                                            case "Master Sorcerer":
+                                                <span class="text-danger">🔥 @player.Vocation</span>
+                                                break;
+                                            case "Elder Druid":
+                                                <span class="text-success">🌿 @player.Vocation</span>
+                                                break;
+                                            case "Royal Paladin":
+                                                <span class="text-warning">🏹 @player.Vocation</span>
+                                                break;
+                                            default:
+                                                <span>@player.Vocation</span>
+                                                break;
+                                        }
+                                    </td>
+                                    @if (Model.CurrentRankingType == RankingType.Level)
+                                    {
+                                        <td style="text-align: center;">
+                                            @if (player.Resets >= 10)
+                                            {
+                                                <span class="badge bg-danger">💀 @player.Resets</span>
+                                            }
+                                            else if (player.Resets >= 5)
+                                            {
+                                                <span class="badge bg-warning text-dark">🔥 @player.Resets</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-secondary">⚡ @player.Resets</span>
+                                            }
+                                        </td>
+                                        <td style="text-align: center;">
+                                            <strong class="text-warning">@player.Level</strong>
+                                        </td>
+                                        <td style="text-align: right;">
+                                            <span class="text-success">@player.Experience.ToString("N0")</span>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td style="text-align: center;">
+                                            <strong class="text-warning">@player.Level</strong>
+                                        </td>
+                                        <td style="text-align: center;">
+                                            @{
+                                                var skillValue = Model.CurrentRankingType switch 
+                                                {
+                                                    RankingType.MagicLevel => player.MagicLevel,
+                                                    RankingType.First => player.FirstSkill,
+                                                    RankingType.Sword => player.SwordSkill,
+                                                    RankingType.Distance => player.DistanceSkill,
+                                                    RankingType.Axe => player.AxeSkill,
+                                                    RankingType.Club => player.ClubSkill,
+                                                    _ => 0
+                                                };
+                                                var skillColor = skillValue >= 130 ? "text-danger" : 
+                                                               skillValue >= 100 ? "text-warning" : 
+                                                               skillValue >= 70 ? "text-info" : "text-muted";
+                                            }
+                                            <strong class="@skillColor">@skillValue</strong>
+                                        </td>
+                                        <td style="text-align: right;">
+                                            <span class="text-success">@player.Experience.ToString("N0")</span>
+                                        </td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Paginação das Trevas -->
+@if (Model.TotalPages > 1)
+{
+    <div class="row mt-4">
+        <div class="col-12">
+            <nav aria-label="Navegação das Almas Perdidas">
+                <ul class="pagination pagination-dark justify-content-center">
+                    <!-- Botão Anterior -->
+                    <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                        <a class="page-link" href="?type=@(Model.CurrentRankingType.ToString().ToLower())&page=@(Model.CurrentPage - 1)" aria-label="Anterior">
+                            <span aria-hidden="true">💀 Anterior</span>
+                        </a>
+                    </li>
+
+                    <!-- Números das páginas -->
+                    @{
+                        int startPage = Math.Max(1, Model.CurrentPage - 2);
+                        int endPage = Math.Min(Model.TotalPages, Model.CurrentPage + 2);
+                        string currentType = Model.CurrentRankingType.ToString().ToLower();
+                    }
+
+                    @if (startPage > 1)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="?type=@currentType&page=1">1</a>
+                        </li>
+                        @if (startPage > 2)
+                        {
+                            <li class="page-item disabled">
+                                <span class="page-link">...</span>
+                            </li>
+                        }
+                    }
+
+                    @for (int i = startPage; i <= endPage; i++)
+                    {
+                        <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                            <a class="page-link" href="?type=@currentType&page=@i">
+                                @if (i == Model.CurrentPage)
+                                {
+                                    <strong>👁 @i</strong>
+                                }
+                                else
+                                {
+                                    @i
+                                }
+                            </a>
+                        </li>
+                    }
+
+                    @if (endPage < Model.TotalPages)
+                    {
+                        @if (endPage < Model.TotalPages - 1)
+                        {
+                            <li class="page-item disabled">
+                                <span class="page-link">...</span>
+                            </li>
+                        }
+                        <li class="page-item">
+                            <a class="page-link" href="?type=@currentType&page=@Model.TotalPages">@Model.TotalPages</a>
+                        </li>
+                    }
+
+                    <!-- Botão Próximo -->
+                    <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+                        <a class="page-link" href="?type=@currentType&page=@(Model.CurrentPage + 1)" aria-label="Próximo">
+                            <span aria-hidden="true">Próximo 🔥</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+}
+
+<!-- Estatísticas das Trevas -->
+<div class="row mt-5">
+    <div class="col-md-3 mb-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h2 class="text-danger">💀</h2>
+                <h5>Maior Reset</h5>
+                <p class="text-warning"><strong>@Model.AllPlayers.Max(p => p.Resets)</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h2 class="text-warning">⭐</h2>
+                <h5>Maior Level</h5>
+                <p class="text-warning"><strong>@Model.AllPlayers.Max(p => p.Level)</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h2 class="text-success">💎</h2>
+                <h5>Maior EXP</h5>
+                <p class="text-warning"><strong>@Model.AllPlayers.Max(p => p.Experience).ToString("N0")</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h2 class="text-info">👥</h2>
+                <h5>Almas Totais</h5>
+                <p class="text-warning"><strong>@Model.TotalPlayers</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action -->
+<div class="card bg-gradient text-center mt-4">
+    <div class="card-body">
+        <h2 class="glow" style="color: #ff6b47;">👁 Sua Alma Está na Lista? 👁</h2>
+        <p class="lead" style="color: #ff6b47; font-weight: bold;">"Apenas os mais corrompidos alcançam o topo das trevas..."</p>
+        <p>Crie sua conta e comece sua jornada rumo ao poder absoluto!</p>
+        <div class="mt-4">
+            <button class="btn btn-warning btn-lg me-3" onclick="alert('Sistema de criação de conta em breve!')">🔥 Despertar Alma</button>
+            <button class="btn btn-outline-light btn-lg" onclick="alert('Download em breve!')">💀 Download Client</button>
+        </div>
+    </div>
+</div> 
+</div> 

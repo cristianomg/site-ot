@@ -1,0 +1,1021 @@
+/* Reset e Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  font-family: 'Cinzel', 'Georgia', serif;
+  background: linear-gradient(135deg, #000000, #0a0a0a, #050505);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: #ff6b47;
+  /* Cor laranja-vermelha de Sauron */
+  position: relative;
+}
+
+/* Background decorativo sombrio de Mordor */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(255, 107, 71, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 0, 0, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(25, 25, 25, 0.05) 0%, transparent 50%);
+  z-index: -1;
+}
+
+/* Header das Sombras de Mordor */
+header {
+  background: linear-gradient(135deg, #000000, #1a1a1a, #0a0a0a);
+  border-bottom: 3px solid #ff6b47;
+  box-shadow: 0 4px 20px rgba(255, 107, 71, 0.3);
+  position: relative;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #8b0000, #ff6b47, #8b0000);
+}
+
+.navbar {
+  background: transparent !important;
+  border: none !important;
+  padding: 1rem 0;
+}
+
+.navbar-brand {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #ff6b47 !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9), 0 0 10px rgba(255, 107, 71, 0.5);
+  text-decoration: none;
+}
+
+.navbar-brand:hover {
+  color: #ff4500 !important;
+  text-shadow: 2px 2px 8px rgba(255, 107, 71, 0.8), 0 0 15px rgba(255, 69, 0, 0.8);
+}
+
+.navbar-nav .nav-link {
+  color: #ff6b47 !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 1rem;
+  padding: 0.5rem 1rem !important;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ff4500 !important;
+  border-color: #ff6b47;
+  background: rgba(255, 107, 71, 0.08);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9), 0 0 8px rgba(255, 107, 71, 0.6);
+}
+
+.navbar-nav .nav-link::before {
+  content: '👁';
+  position: absolute;
+  left: -15px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::before {
+  opacity: 1;
+}
+
+/* Container das Trevas de Mordor */
+.container {
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(15px);
+  border: 2px solid #ff6b47;
+  border-radius: 10px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(255, 107, 71, 0.2);
+  position: relative;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #8b0000, #ff6b47, #8b0000, #ff4500);
+  border-radius: 12px;
+  z-index: -1;
+  opacity: 0.15;
+}
+
+/* Títulos das Trevas de Sauron */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Cinzel Decorative', cursive;
+  color: #ff6b47;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9), 0 0 10px rgba(255, 107, 71, 0.4);
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  border-bottom: 2px solid #ff6b47;
+  padding-bottom: 1rem;
+  position: relative;
+}
+
+h1::before,
+h1::after {
+  content: '👁';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: #ff6b47;
+}
+
+h1::before {
+  left: 0;
+}
+
+h1::after {
+  right: 0;
+}
+
+/* Cards das Trevas de Mordor */
+.card {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.98), rgba(10, 10, 10, 0.98));
+  border: 2px solid #ff6b47;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(255, 107, 71, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 107, 71, 0.4);
+}
+
+.card-header {
+  background: linear-gradient(135deg, #8b0000, #ff6b47);
+  color: #000000;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 1rem 1.5rem;
+  border-bottom: 2px solid #ff4500;
+}
+
+.card-body {
+  padding: 1.5rem;
+  color: #cccccc;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Botões das Trevas de Sauron */
+.btn {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #ff6b47;
+  border-radius: 5px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(255, 107, 71, 0.1));
+  color: #ff6b47;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, rgba(255, 107, 71, 0.2), rgba(255, 107, 71, 0.3));
+  color: #ff4500;
+  border-color: #ff4500;
+  box-shadow: 0 4px 15px rgba(255, 107, 71, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #8b0000, #ff6b47);
+  color: #000000;
+  border-color: #ff6b47;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #ff4500, #ff6b47);
+  border-color: #ff4500;
+  color: #000000;
+}
+
+/* Tabelas das Trevas */
+.table {
+  background: rgba(0, 0, 0, 0.98);
+  border: 2px solid #ff6b47;
+  border-radius: 8px;
+  overflow: hidden;
+  color: #cccccc;
+}
+
+.table th {
+  background: linear-gradient(135deg, #8b0000, #ff6b47);
+  color: #000000;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #ff4500;
+  padding: 1rem;
+}
+
+.table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 107, 71, 0.2);
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.table tr:hover {
+  background: rgba(255, 107, 71, 0.08);
+}
+
+/* Forms das Trevas */
+.form-control {
+  background: rgba(0, 0, 0, 0.98);
+  border: 2px solid #ff6b47;
+  border-radius: 5px;
+  color: #ff6b47;
+  padding: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  background: rgba(5, 5, 5, 0.99);
+  border-color: #ff4500;
+  box-shadow: 0 0 10px rgba(255, 107, 71, 0.4);
+  color: #ff4500;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 107, 71, 0.5);
+}
+
+/* Footer das Trevas de Mordor */
+footer {
+  background: linear-gradient(135deg, #000000, #0a0a0a);
+  border-top: 3px solid #ff6b47;
+  color: #ff6b47;
+  padding: 2rem 0;
+  margin-top: 3rem;
+  text-align: center;
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #8b0000, #ff6b47, #8b0000);
+}
+
+footer a {
+  color: #ff6b47;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #ff4500;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9), 0 0 8px rgba(255, 107, 71, 0.6);
+}
+
+/* Elementos Decorativos */
+.medieval-divider {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff6b47, transparent);
+  margin: 2rem 0;
+  position: relative;
+}
+
+.medieval-divider::before {
+  content: '👁';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #000000;
+  padding: 0 1rem;
+  color: #ff6b47;
+  font-size: 1.5rem;
+}
+
+/* Animações do Olho de Sauron */
+@keyframes glow {
+
+  0%,
+  100% {
+    text-shadow: 0 0 5px rgba(255, 107, 71, 0.6);
+  }
+
+  50% {
+    text-shadow: 0 0 20px rgba(255, 107, 71, 0.9), 0 0 30px rgba(255, 69, 0, 0.7);
+  }
+}
+
+.glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .navbar-nav .nav-link::before {
+    display: none;
+  }
+}
+
+/* Scrollbar Medieval mais escura */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #8b0000, #ff6b47);
+  border-radius: 6px;
+  border: 2px solid #000000;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #ff4500, #ff6b47);
+}
+
+/* Alerts Medievais mais escuros */
+.alert {
+  border: 2px solid;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  font-weight: 600;
+  background: rgba(30, 30, 30, 0.9);
+}
+
+.alert-success {
+  background: rgba(0, 0, 0, 0.95);
+  border-color: #2d5a2d;
+  color: #66b366;
+}
+
+.alert-warning {
+  background: rgba(0, 0, 0, 0.95);
+  border-color: #996600;
+  color: #cc8800;
+}
+
+.alert-danger {
+  background: rgba(0, 0, 0, 0.95);
+  border-color: #8b0000;
+  color: #cc4444;
+}
+
+.alert-info {
+  background: rgba(0, 0, 0, 0.95);
+  border-color: #2e4a6b;
+  color: #5c7a9e;
+}
+
+/* Ajustes para badges e elementos especiais */
+.badge {
+  background: rgba(35, 35, 35, 0.9) !important;
+  color: #d4af37 !important;
+  border: 1px solid #d4af37;
+}
+
+.bg-success {
+  background: rgba(25, 60, 25, 0.8) !important;
+}
+
+.text-success {
+  color: #66b366 !important;
+  /* Verde dark */
+}
+
+.text-warning {
+  color: #cc8800 !important;
+  /* Amarelo dark */
+}
+
+.text-info {
+  color: #5c7a9e !important;
+  /* Azul dark */
+}
+
+.text-danger {
+  color: #cc4444 !important;
+  /* Vermelho dark */
+}
+
+/* Bordas especiais para elementos com cores */
+.border-warning {
+  border-color: #ffa500 !important;
+}
+
+.border-info {
+  border-color: #1e90ff !important;
+}
+
+.border-success {
+  border-color: #228b22 !important;
+}
+
+.border-danger {
+  border-color: #dc143c !important;
+}
+
+/* Ajuste para o lead text */
+.lead {
+  color: #e6e6e6;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Ajuste para texto pequeno */
+.small,
+small {
+  color: #b0b0b0;
+}
+
+.text-muted {
+  color: #888888 !important;
+}
+
+/* Efeito Dragão Devorador */
+.dragon-devour-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.dragon-devour-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.dragon-devour-btn::after {
+  content: '💀';
+  position: absolute;
+  top: 50%;
+  left: -50px;
+  transform: translateY(-50%);
+  font-size: 35px;
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 10;
+  filter: drop-shadow(0 0 10px #ff6b47);
+}
+
+.dragon-devour-btn:hover::after {
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  animation: soulCorruption 0.8s ease-in-out;
+}
+
+.dragon-devour-btn:hover {
+  background: linear-gradient(135deg, #8b0000, #ff6b47);
+  border-color: #ff6b47;
+  color: transparent !important;
+  box-shadow: 0 6px 20px rgba(255, 107, 71, 0.6);
+  transform: scale(0.95) translateY(-3px);
+}
+
+.dragon-devour-btn:hover .btn-text {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+@keyframes soulCorruption {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8) rotate(0deg);
+    filter: drop-shadow(0 0 5px #ff6b47);
+  }
+
+  25% {
+    transform: translate(-50%, -50%) scale(1.2) rotate(-15deg);
+    filter: drop-shadow(0 0 15px #8b0000);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.4) rotate(10deg);
+    filter: drop-shadow(0 0 20px #ff4500);
+  }
+
+  75% {
+    transform: translate(-50%, -50%) scale(1.1) rotate(-5deg);
+    filter: drop-shadow(0 0 25px #8b0000);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 15px #ff6b47);
+  }
+}
+
+/* Estilos específicos para página de Highscores */
+.table-striped>tbody>tr:nth-of-type(odd) {
+  background-color: rgba(255, 107, 71, 0.05) !important;
+}
+
+.table-hover>tbody>tr:hover {
+  background-color: rgba(255, 107, 71, 0.1) !important;
+  transform: scale(1.01);
+  transition: all 0.2s ease;
+}
+
+.badge {
+  font-size: 0.85em;
+  padding: 0.4em 0.6em;
+  border-radius: 0.35rem;
+}
+
+.bg-warning {
+  background-color: #ff6b47 !important;
+}
+
+.bg-secondary {
+  background-color: #666666 !important;
+}
+
+/* Medalhas especiais */
+.badge:contains("🥇") {
+  animation: goldShine 2s ease-in-out infinite;
+}
+
+.table th {
+  border-bottom: 2px solid #ff6b47 !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.table td {
+  border-bottom: 1px solid rgba(255, 107, 71, 0.2) !important;
+  vertical-align: middle;
+}
+
+/* Efeito de brilho para o primeiro lugar */
+.table tbody tr:first-child {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 107, 71, 0.1)) !important;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Responsividade para tabela de highscores */
+@media (max-width: 768px) {
+  .table-responsive {
+    font-size: 0.9rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.5rem 0.3rem;
+  }
+
+  .badge {
+    font-size: 0.75em;
+    padding: 0.3em 0.5em;
+  }
+}
+
+/* Estilos para Paginação das Trevas */
+.pagination-dark .page-link {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid #ff6b47;
+  color: #ff6b47;
+  padding: 0.75rem 1rem;
+  margin: 0 0.2rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.pagination-dark .page-link:hover {
+  background-color: rgba(255, 107, 71, 0.2);
+  border-color: #ff4500;
+  color: #ff4500;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 107, 71, 0.4);
+}
+
+.pagination-dark .page-item.active .page-link {
+  background: linear-gradient(135deg, #8b0000, #ff6b47);
+  border-color: #ff6b47;
+  color: #000000;
+  box-shadow: 0 0 15px rgba(255, 107, 71, 0.6);
+  transform: scale(1.1);
+}
+
+.pagination-dark .page-item.disabled .page-link {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-color: #333333;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.pagination-dark .page-item.disabled .page-link:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-color: #333333;
+  color: #666666;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Efeito especial para página atual */
+.pagination-dark .page-item.active .page-link strong {
+  text-shadow: 0 0 10px #ff6b47;
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    text-shadow: 0 0 10px #ff6b47;
+  }
+
+  50% {
+    text-shadow: 0 0 20px #ff6b47, 0 0 30px #ff4500;
+  }
+}
+
+/* Responsividade da paginação */
+@media (max-width: 576px) {
+  .pagination-dark .page-link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    margin: 0 0.1rem;
+  }
+
+  .pagination-dark .page-item.active .page-link {
+    transform: scale(1.05);
+  }
+}
+
+/* =================================
+   SIDEBAR DE RANKINGS DAS TREVAS
+   ================================= */
+
+.ranking-sidebar {
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+  border: 2px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(255, 107, 71, 0.15);
+  overflow: hidden;
+}
+
+.ranking-sidebar .card-header {
+  background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+  border-bottom: 2px solid #ff6b47;
+  color: #ff6b47;
+  text-align: center;
+  padding: 1rem;
+}
+
+.ranking-sidebar .card-header h5 {
+  margin: 0;
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.ranking-sidebar .list-group-item {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #333;
+  color: #ccc;
+  text-decoration: none;
+  padding: 0.8rem 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ranking-sidebar .list-group-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 107, 71, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.ranking-sidebar .list-group-item:hover::before {
+  left: 100%;
+}
+
+.ranking-sidebar .list-group-item:hover {
+  background: linear-gradient(135deg, rgba(255, 107, 71, 0.1), rgba(139, 0, 0, 0.05));
+  color: #ff6b47;
+  transform: translateX(5px);
+  border-left: 3px solid #ff6b47;
+}
+
+.ranking-sidebar .list-group-item.active {
+  background: linear-gradient(135deg, #ff6b47, #8b0000);
+  color: #000;
+  font-weight: bold;
+  border-left: 5px solid #ff6b47;
+  box-shadow: inset 0 0 20px rgba(255, 107, 71, 0.3);
+}
+
+.ranking-sidebar .list-group-item.active .fw-bold {
+  color: #000;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.ranking-sidebar .list-group-item.active small {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.ranking-sidebar .list-group-item span {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.8));
+}
+
+.ranking-sidebar .list-group-item .fw-bold {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.ranking-sidebar .list-group-item small {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+/* Animação de entrada da sidebar */
+.ranking-sidebar {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsividade da sidebar */
+@media (max-width: 991px) {
+  .ranking-sidebar {
+    margin-bottom: 2rem;
+  }
+
+  .ranking-sidebar .list-group-item {
+    padding: 0.6rem 0.8rem;
+  }
+
+  .ranking-sidebar .list-group-item .fw-bold {
+    font-size: 0.9rem;
+  }
+
+  .ranking-sidebar .list-group-item small {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .ranking-sidebar .card-header {
+    padding: 0.8rem;
+  }
+
+  .ranking-sidebar .card-header h5 {
+    font-size: 1.1rem;
+  }
+}
+
+/* =================================
+   SIDEBAR DE RANKINGS DAS TREVAS
+   ================================= */
+
+.ranking-sidebar {
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+  border: 2px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(255, 107, 71, 0.15);
+  overflow: hidden;
+}
+
+.ranking-sidebar .card-header {
+  background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+  border-bottom: 2px solid #ff6b47;
+  color: #ff6b47;
+  text-align: center;
+  padding: 1rem;
+}
+
+.ranking-sidebar .card-header h5 {
+  margin: 0;
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.ranking-sidebar .list-group-item {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #333;
+  color: #ccc;
+  text-decoration: none;
+  padding: 0.8rem 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ranking-sidebar .list-group-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 107, 71, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.ranking-sidebar .list-group-item:hover::before {
+  left: 100%;
+}
+
+.ranking-sidebar .list-group-item:hover {
+  background: linear-gradient(135deg, rgba(255, 107, 71, 0.1), rgba(139, 0, 0, 0.05));
+  color: #ff6b47;
+  transform: translateX(5px);
+  border-left: 3px solid #ff6b47;
+}
+
+.ranking-sidebar .list-group-item.active {
+  background: linear-gradient(135deg, #ff6b47, #8b0000);
+  color: #000;
+  font-weight: bold;
+  border-left: 5px solid #ff6b47;
+  box-shadow: inset 0 0 20px rgba(255, 107, 71, 0.3);
+}
+
+.ranking-sidebar .list-group-item.active .fw-bold {
+  color: #000;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.ranking-sidebar .list-group-item.active small {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.ranking-sidebar .list-group-item span {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.8));
+}
+
+.ranking-sidebar .list-group-item .fw-bold {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.ranking-sidebar .list-group-item small {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+/* Animação de entrada da sidebar */
+.ranking-sidebar {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsividade da sidebar */
+@media (max-width: 991px) {
+  .ranking-sidebar {
+    margin-bottom: 2rem;
+  }
+
+  .ranking-sidebar .list-group-item {
+    padding: 0.6rem 0.8rem;
+  }
+
+  .ranking-sidebar .list-group-item .fw-bold {
+    font-size: 0.9rem;
+  }
+
+  .ranking-sidebar .list-group-item small {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .ranking-sidebar .card-header {
+    padding: 0.8rem;
+  }
+
+  .ranking-sidebar .card-header h5 {
+    font-size: 1.1rem;
+  }
+}
