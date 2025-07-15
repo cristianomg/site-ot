@@ -8,10 +8,8 @@ namespace OtServer.Domain.Repositories
         List<Player> GetPlayerRankLevel();
         List<Player> GetPlayerRankMagicLevel();
         List<Skill> GetPlayerRankSkill(SkillEnum skillId);
-        List<DeathList> GetDeathLists();
-        List<DeathList> GetDeathByName(string playerName);
         Player? GetByName(string name);
-        IEnumerable<Player?> GetPlayersOnline();
-        List<string> GetOnlineList();
+        bool IsPlayer(string playerName);
+        Player? GetById(int id);
     }
 }

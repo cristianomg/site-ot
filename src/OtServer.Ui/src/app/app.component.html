@@ -1,0 +1,77 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand glow" routerLink="/">💀 Shadow Souls 💀</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{exact: true}">🏴 Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/highscores" routerLinkActive="active">⚔️ Highscores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/players-online" routerLinkActive="active">👥 Players Online</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" (click)="showComingSoon($event)">🔥 Last Kills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" (click)="showComingSoon($event)">📜 Rules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" (click)="showComingSoon($event)">💎 Donate</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary dragon-devour-btn" href="#"
+                            (click)="showComingSoon($event)">👁 Entrar nas Trevas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    <main role="main" class="pb-3">
+        <router-outlet></router-outlet>
+    </main>
+</div>
+
+<div class="medieval-divider"></div>
+
+<footer>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <h5>💀 Shadow Souls 💀</h5>
+                <p>O reino sombrio mais poderoso de todas as masmorras!</p>
+            </div>
+            <div class="col-md-4">
+                <h5>🔥 Status das Trevas</h5>
+                <app-server-status></app-server-status>
+                <app-online-players></app-online-players>
+            </div>
+            <div class="col-md-4">
+                <h5>⚡ Portais Sombrios</h5>
+                <p>
+                    <a href="#" (click)="showComingSoon($event)">Download das Trevas</a><br>
+                    <a href="#" (click)="showComingSoon($event)">Conselho Sombrio</a><br>
+                    <a href="#" (click)="showComingSoon($event)">Arquivos de Mordor</a>
+                </p>
+            </div>
+        </div>
+        <hr style="border-color: #ff6b47; margin: 2rem 0;">
+        <div class="text-center">
+            <p>&copy; 2025 - Shadow Souls - Todos os direitos reservados às almas das masmorras</p>
+            <p><small>Onde as almas são forjadas nas trevas - Entre por sua conta e risco</small></p>
+        </div>
+    </div>
+</footer>

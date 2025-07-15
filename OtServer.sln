@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtServer.Web", "src\OtServe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtServer.Infrasctruture", "src\OtServer.Infrasctruture\OtServer.Infrasctruture.csproj", "{A40249AD-B5F6-4878-AD96-BB334DE03D22}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtServer.Api", "src\OtServer.Api\OtServer.Api.csproj", "{06B1D77B-0056-4F9A-A106-B4355AA9A766}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A40249AD-B5F6-4878-AD96-BB334DE03D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A40249AD-B5F6-4878-AD96-BB334DE03D22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A40249AD-B5F6-4878-AD96-BB334DE03D22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06B1D77B-0056-4F9A-A106-B4355AA9A766}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06B1D77B-0056-4F9A-A106-B4355AA9A766}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06B1D77B-0056-4F9A-A106-B4355AA9A766}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06B1D77B-0056-4F9A-A106-B4355AA9A766}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
