@@ -4,6 +4,86 @@ namespace OtServer.Domain.Entities
 {
     public class Player
     {
+        public Player()
+        {
+            
+        }
+        public Player(string name, SexEnum sex, int voc)
+        {
+            Name = name;
+            Sex = sex;
+            Level = 8;
+            Vocation = voc;
+            Access = 0;
+            Health = 180;
+            HealthMax = 180;
+            Mana = 40;
+            ManaMax = 40;
+            SoulMax = 250;
+            Experience = 4200;
+            LookBody = 20;
+            LookFeet = 30;
+            LookHead = 40;
+            LookLegs = 50;
+            LookType = 128;
+            Pos = "121;311;7";
+            MasterPos = "121;311;7";
+            Speed = 900;
+            Cap = 380;
+
+            Skills = new List<Skill>
+            {
+                new Skill
+                {
+                    PlayerId = this.Id,
+                    Id = 0,
+                    SkillLevel = 10,
+                    Tries = 0
+                },
+                new Skill
+                {
+                    PlayerId = this.Id,
+                    Id = 1,
+                    SkillLevel = 10,
+                    Tries = 0
+                },
+                new Skill
+                {
+                    PlayerId = this.Id,
+                    Id = 2,
+                    SkillLevel = 10,
+                    Tries = 0
+                },
+                new Skill
+                {
+                    PlayerId = this.Id,
+                    Id = 3,
+                    SkillLevel = 10,
+                    Tries = 0
+                },
+                new Skill
+                {
+                    PlayerId = this.Id,
+                    Id = 4,
+                    SkillLevel = 10,
+                    Tries = 0
+                },
+                new Skill
+                {
+                    PlayerId = this.Id,
+                    Id = 5,
+                    SkillLevel = 10,
+                    Tries = 0
+                },
+                new Skill
+                {
+                    PlayerId = this.Id,
+                    Id = 6,
+                    SkillLevel = 10,
+                    Tries = 0
+                },
+            };
+        }
         public int Id { get; set; }
         public string Name { get; set; }
         public int Access { get; set; }

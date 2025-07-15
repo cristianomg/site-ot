@@ -17,6 +17,7 @@ namespace OtServer.Infrasctruture.Repositories
         {
             var query = _dataContext.Set<DeathList>()
                 .Include(x=>x.Player)
+                .OrderByDescending(x=>x.Date)
                 .Where(x=> x.Player.Name.ToLower() == playerName.ToLower())
                 .Take(5);
 
@@ -27,6 +28,7 @@ namespace OtServer.Infrasctruture.Repositories
         {
             var query = _dataContext.Set<DeathList>()
                 .Include(x => x.Player)
+                .OrderByDescending(x=>x.Date)
                 .Take(20);
 
             return query.ToList();

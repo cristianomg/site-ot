@@ -1,0 +1,7 @@
+.table,
+.table-bordered,
+.table>thead>tr>th,
+.table>tbody>tr>td {
+    background-color: transparent !important;
+    color: #fff !important;
+}

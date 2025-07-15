@@ -1,0 +1,29 @@
+.glow {
+    color: #ff6b47;
+    text-shadow: 0 0 8px #ff6b47, 0 0 16px #ff6b4744;
+}
+
+.category-title {
+    color: #ff6b47;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.table-shop th,
+.table-shop td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.item-name {
+    color: orange;
+    font-weight: bold;
+}
+
+.item-price {
+    color: #cb0000;
+    font-weight: bold;
+    font-size: 1.1rem;
+}

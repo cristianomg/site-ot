@@ -1,0 +1,57 @@
+<div class="container mt-4">
+  <h1 class="glow mb-4">Minha Conta</h1>
+
+  <div *ngIf="loading" class="alert alert-info">Carregando dados da conta...</div>
+  <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+
+  <div *ngIf="!loading && !error && accountData">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h4>Informações da Conta</h4>
+        <p><strong>Número da Conta:</strong> {{accountData.accountNumber}}</p>
+        <p><strong>Email:</strong> {{accountData.email}}</p>
+        <p><strong>Nome Real:</strong> {{accountData.realName}}</p>
+        <p><strong>Localização:</strong> {{accountData.location}}</p>
+        <div class="d-flex gap-2 mt-3">
+          <button class="btn btn-outline-primary" (click)="alterarSenha()">Alterar Senha</button>
+          <button class="btn btn-outline-secondary" (click)="alterarEmail()">Alterar Email</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="mb-0">Personagens</h4>
+          <button class="btn btn-primary" (click)="criarPersonagem()">Criar Personagem</button>
+        </div>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Vocação</th>
+              <th>Resets</th>
+              <th>Level</th>
+              <th>Experiência</th>
+              <th>Magic Level</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let player of accountData.players">
+              <td><a routerLink="/character/{{player.name}}">{{player.name}}</a></td>
+              <td>{{player.vocation}}</td>
+              <td>{{player.resets}}</td>
+              <td>{{player.level}}</td>
+              <td>{{player.experience | number}}</td>
+              <td>{{player.magicLevel}}</td>
+              <td>
+                <button class="btn btn-outline-danger btn-sm" (click)="deletarPersonagem(player)">Deletar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

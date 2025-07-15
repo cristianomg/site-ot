@@ -1,0 +1,70 @@
+<div class="container mt-5" style="max-width: 450px;">
+    <div class="card shadow">
+        <div class="card-body">
+            <h2 class="glow text-center mb-4">Criar Conta</h2>
+            <form [formGroup]="registerForm" (ngSubmit)="criarConta()">
+                <div class="mb-3">
+                    <label for="account" class="form-label">Account</label>
+                    <input type="text" id="account" class="form-control" formControlName="account"
+                        autocomplete="username">
+                    <div *ngIf="registerForm.get('account')?.touched && registerForm.get('account')?.invalid"
+                        class="text-danger small">Account é obrigatório.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Senha</label>
+                    <input type="password" id="password" class="form-control" formControlName="password"
+                        autocomplete="new-password">
+                    <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.errors"
+                        class="text-danger small">
+                        <div *ngIf="registerForm.get('password')?.errors?.['required']">Senha é obrigatória.</div>
+                        <div *ngIf="registerForm.get('password')?.errors?.['minlength']">Senha deve ter pelo menos 6
+                            caracteres.</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">Confirmar Senha</label>
+                    <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword"
+                        autocomplete="new-password">
+                    <div *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.hasError('mismatch')"
+                        class="text-danger small">As senhas não coincidem.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Nome</label>
+                    <input type="text" id="nome" class="form-control" formControlName="nome">
+                    <div *ngIf="registerForm.get('nome')?.touched && registerForm.get('nome')?.invalid"
+                        class="text-danger small">Nome é obrigatório.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Localização</label>
+                    <input type="text" id="location" class="form-control" formControlName="location">
+                    <div *ngIf="registerForm.get('location')?.touched && registerForm.get('location')?.invalid"
+                        class="text-danger small">Localização é obrigatória.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" class="form-control" formControlName="email" autocomplete="email">
+                    <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors"
+                        class="text-danger small">
+                        <div *ngIf="registerForm.get('email')?.errors?.['required']">Email é obrigatório.</div>
+                        <div *ngIf="registerForm.get('email')?.errors?.['email']">Email inválido.</div>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Criar Conta</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div *ngIf="showErrorToast"
+    class="toast align-items-center text-bg-danger border-0 show position-fixed bottom-0 end-0 m-4" role="alert"
+    aria-live="assertive" aria-atomic="true" style="z-index: 9999; min-width: 250px;">
+    <div class="d-flex">
+        <div class="toast-body">
+            {{ errorMessage }}
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" aria-label="Close"
+            (click)="showErrorToast = false"></button>
+    </div>
+</div>

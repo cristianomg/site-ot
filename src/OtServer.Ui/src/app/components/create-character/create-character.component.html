@@ -1,0 +1,38 @@
+<div class="container mt-5" style="max-width: 450px;">
+    <div class="card shadow">
+        <div class="card-body">
+            <h2 class="glow text-center mb-4">Criar Personagem</h2>
+            <form [formGroup]="characterForm" (ngSubmit)="criarPersonagem()">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nome</label>
+                    <input type="text" id="name" class="form-control" formControlName="name">
+                    <div *ngIf="characterForm.get('name')?.touched && characterForm.get('name')?.invalid"
+                        class="text-danger small">Nome é obrigatório.</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Sexo</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="masculino" formControlName="sex" [value]="0">
+                        <label class="form-check-label" for="masculino">Masculino</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="feminino" formControlName="sex" [value]="1">
+                        <label class="form-check-label" for="feminino">Feminino</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Vocação</label>
+                    <div *ngFor="let v of vocations" class="form-check">
+                        <input class="form-check-input" type="radio" [id]="'vocation' + v.value"
+                            formControlName="vocation" [value]="v.value">
+                        <label class="form-check-label" [for]="'vocation' + v.value">{{v.label}}</label>
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary" [disabled]="characterForm.invalid">Criar
+                        Personagem</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

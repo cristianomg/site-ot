@@ -1,0 +1,13 @@
+.glow {
+    color: #ff6b47;
+    text-shadow: 0 0 8px #ff6b47, 0 0 16px #ff6b4744;
+}
+
+.card {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.card-body {
+    font-size: 1.1rem;
+}

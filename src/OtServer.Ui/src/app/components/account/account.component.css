@@ -1,0 +1,29 @@
+.glow {
+    color: #ff6b47;
+    text-shadow: 0 0 8px #ff6b47, 0 0 16px #ff6b4744;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.10);
+}
+
+h4 {
+    color: #ff6b47;
+    margin-bottom: 1rem;
+}
+
+.table,
+.table-bordered,
+.table>thead>tr>th,
+.table>tbody>tr>td {
+    background-color: transparent !important;
+    color: #fff !important;
+    border: none !important;
+}
+
+a,
+.table a {
+    color: #ff6b47 !important;
+    text-decoration: underline;
+}

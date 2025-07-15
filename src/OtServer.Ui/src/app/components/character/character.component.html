@@ -102,9 +102,9 @@
                 <div class="card-header">Mortes Recentes</div>
                 <div class="card-body">
                     <ul class="list-group" *ngIf="deaths && deaths.length > 0">
-                        <li class="list-group-item" *ngFor="let death of deaths">
+                        <!-- <li class="list-group-item" *ngFor="let death of deaths">
                             <span class="text-muted">{{formatDate(death.date)}}</span> - {{death.description}}
-                        </li>
+                        </li> -->
                     </ul>
                     <span class="text-muted" *ngIf="!deaths || deaths.length === 0">Nenhuma morte recente
                         encontrada.</span>

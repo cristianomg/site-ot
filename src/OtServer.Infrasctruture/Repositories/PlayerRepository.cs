@@ -20,8 +20,8 @@ namespace OtServer.Infrasctruture.Repositories
                 FilterAccountManager(_context.Set<Player>())
 
                 .OrderByDescending(x => x.Resets)
-                .ThenByDescending(x=>x.Vocation)
                 .ThenByDescending(x => x.Level)
+                .ThenByDescending(x=>x.Vocation)
                 .ThenByDescending(x => x.Experience)
                 .AsNoTracking();
 
@@ -48,6 +48,8 @@ namespace OtServer.Infrasctruture.Repositories
                 _context.Set<Skill>()
                 .Where(x => x.Id == (int)skillId)
                 .Include(x => x.Player)
+                .Where(x => x.Player.Name != "Account Manager")
+                .Where(x => x.Player.Access < 2)
                 .OrderByDescending(x=>x.SkillLevel)
                 .ThenByDescending(x=>x.Tries);
 

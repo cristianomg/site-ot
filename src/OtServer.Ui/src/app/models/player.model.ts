@@ -56,10 +56,12 @@ export interface Guild {
 }
 
 export interface DeathList {
-  id: number;
-  playerId: number;
-  date: string;
-  description: string;
+  level: number;
+  playerId: number,
+  playerName: string,
+  date: string,
+  killerName: string,
+  killerIsPlayer: boolean,
 }
 
 export enum RankingType {
@@ -73,7 +75,6 @@ export enum RankingType {
 }
 
 export enum VocationEnum {
-  None = 0,
   Sorcerer = 1,
   Druid = 2,
   Paladin = 3,
@@ -83,4 +84,10 @@ export enum VocationEnum {
 export enum SexEnum {
   Male = 0,
   Female = 1
-} 
+}
+
+export interface PlayerCreate {
+  name: string;
+  sex: SexEnum;
+  vocation: VocationEnum;
+}

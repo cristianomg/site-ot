@@ -27,7 +27,7 @@ export class CharacterComponent implements OnInit {
     loadCharacter(name: string): void {
         // Mock data - em uma aplicação real, isso viria de uma API
         this.player = this.generateMockPlayer(name);
-        this.deaths = this.generateMockDeaths();
+        // this.deaths = null;
         this.otherCharacters = this.generateMockOtherCharacters();
     }
 
@@ -65,30 +65,6 @@ export class CharacterComponent implements OnInit {
         };
     }
 
-    generateMockDeaths(): DeathList[] {
-        const deathDescriptions = [
-            'Morto por um dragão',
-            'Morto por um orc',
-            'Morto por um troll',
-            'Morto por um goblin',
-            'Morto por um demônio',
-            'Morto por um necromante',
-            'Morto por um vampiro',
-            'Morto por um liche'
-        ];
-
-        const deaths: DeathList[] = [];
-        for (let i = 0; i < Math.floor(Math.random() * 5); i++) {
-            deaths.push({
-                id: i + 1,
-                playerId: 1,
-                date: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
-                description: deathDescriptions[Math.floor(Math.random() * deathDescriptions.length)]
-            });
-        }
-
-        return deaths.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-    }
 
     generateMockOtherCharacters(): Player[] {
         const names = ['Sauron', 'Nazgul', 'Morgoth', 'Balrog', 'Orc'];
@@ -123,7 +99,6 @@ export class CharacterComponent implements OnInit {
 
     getVocationName(vocation: number): string {
         switch (vocation) {
-            case VocationEnum.None: return 'Nenhuma';
             case VocationEnum.Sorcerer: return 'Sorcerer';
             case VocationEnum.Druid: return 'Druid';
             case VocationEnum.Paladin: return 'Paladin';

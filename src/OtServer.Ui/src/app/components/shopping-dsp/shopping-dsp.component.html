@@ -1,0 +1,95 @@
+<div class="container mt-4">
+    <h1 class="glow mb-4">💎 Shopping DSP</h1>
+
+    <div class="mb-4">
+        <h2 class="category-title">Runas</h2>
+        <table class="table table-bordered table-shop">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of runas">
+                    <td><img [src]="item.img" [alt]="item.name" width="48" height="48"></td>
+                    <td><span class="item-name">{{item.name}}</span> - {{item.description}}</td>
+                    <td><span class="item-price">{{item.price}}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mb-4">
+        <h2 class="category-title">Premium</h2>
+        <table class="table table-bordered table-shop">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of premium">
+                    <td><img [src]="item.img" [alt]="item.name" width="48" height="48"></td>
+                    <td><span class="item-name">{{item.name}}</span> - {{item.description}}</td>
+                    <td><span class="item-price">{{item.price}}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mb-4">
+        <h2 class="category-title">Itens</h2>
+        <table class="table table-bordered table-shop">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of items">
+                    <td><img [src]="item.img" [alt]="item.name" width="48" height="48"></td>
+                    <td><span class="item-name">{{item.name}}</span> - {{item.description}}</td>
+                    <td><span class="item-price">{{item.price}}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mb-4">
+        <h2 class="category-title">Variados</h2>
+        <table class="table table-bordered table-shop">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of variados">
+                    <td><img [src]="item.img" [alt]="item.name" width="48" height="48"></td>
+                    <td><span class="item-name">{{item.name}}</span> - {{item.description}}</td>
+                    <td><span class="item-price">{{item.price}}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="alert alert-warning mt-4">
+        <strong>Todos os itens listados acima são vendidos pelo NPC Mark Merchant, que se encontra no último andar de
+            todos os Depots.</strong>
+    </div>
+    <div class="alert alert-danger mt-2">
+        <strong>Obs:</strong> Sempre preste atenção sobre sua capacidade quando comprar itens no NPC, pois é mostrada a
+        cap do item antes de comprá-lo. Caso contrário, sua backpack irá vir faltando item.
+    </div>
+    <div class="alert alert-info mt-2 text-center">
+        <strong>Em breve novos itens serão adicionados!</strong>
+    </div>
+</div>

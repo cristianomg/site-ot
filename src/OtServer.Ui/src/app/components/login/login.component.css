@@ -1,0 +1,24 @@
+.glow {
+    color: #ff6b47;
+    text-shadow: 0 0 8px #ff6b47, 0 0 16px #ff6b4744;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.10);
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.btn-primary {
+    background-color: #ff6b47;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #d94c2a;
+}
+
+.container {
+    max-width: 600px;
+}

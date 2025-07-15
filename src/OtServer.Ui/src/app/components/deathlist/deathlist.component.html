@@ -1,0 +1,24 @@
+<div class="container mt-4">
+    <h1 class="glow mb-4">💀 Últimas Mortes</h1>
+
+    <div *ngIf="loading" class="alert alert-info">Carregando mortes recentes...</div>
+    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+
+    <div *ngIf="!loading && !error">
+        <div *ngIf="deaths.length > 0; else noDeaths">
+            <div class="card mb-3" *ngFor="let death of deaths">
+                <div class="card-body">
+                    <span class="text-muted">{{death.date | date:'dd/MM/yyyy HH:mm'}}</span> -
+                    <a [routerLink]="['/character', death.playerName]" class="text-warning"
+                        style="text-decoration:underline;">{{death.playerName}}</a> died at level {{death.level}} by
+                    <a *ngIf="death.killerIsPlayer" [routerLink]="['/character', death.killerName]" class="text-warning"
+                        style="text-decoration:underline;">{{death.killerName}}</a>
+                    <span *ngIf="!death.killerIsPlayer">{{death.killerName}}</span>
+                </div>
+            </div>
+        </div>
+        <ng-template #noDeaths>
+            <div class="alert alert-secondary">Nenhuma morte recente encontrada.</div>
+        </ng-template>
+    </div>
+</div>

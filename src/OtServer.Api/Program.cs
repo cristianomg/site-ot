@@ -1,12 +1,44 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using OtServer.Api.Mappings;
+using OtServer.Domain.Config;
 using OtServer.Domain.Repositories;
+using OtServer.Domain.Services;
 using OtServer.Infrasctruture;
 using OtServer.Infrasctruture.Repositories;
+using OtServer.Infrasctruture.Services;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+var jwtSecretKey = builder.Configuration["Security:JwtSecretKey"]
+                               ?? throw new ArgumentNullException("Encryption key not configured");
+
+builder.Services.Configure<CryptographConfig>(builder.Configuration.GetSection("Security"));
+
+
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+    .AddJwtBearer(x =>
+    {
+        x.RequireHttpsMetadata = false;
+        x.SaveToken = true;
+        x.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSecretKey)),
+            ValidateIssuer = false,
+            ValidateAudience = false
+        };
+    });
+
+
 
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseMySql(
@@ -22,6 +54,7 @@ builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
 builder.Services.AddScoped<IDeathListRepository, DeathListRepository>();
 builder.Services.AddScoped<IServerRepository, ServerRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

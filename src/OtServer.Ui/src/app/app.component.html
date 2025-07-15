@@ -19,19 +19,26 @@
                         <a class="nav-link" routerLink="/players-online" routerLinkActive="active">👥 Players Online</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" (click)="showComingSoon($event)">🔥 Last Kills</a>
+                        <a class="nav-link" routerLink="/ultimas-mortes" routerLinkActive="active">💀 Últimas Mortes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" (click)="showComingSoon($event)">📜 Rules</a>
+                        <a class="nav-link" routerLink="/regras" routerLinkActive="active">📜 Regras</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" (click)="showComingSoon($event)">💎 Donate</a>
+                        <a class="nav-link" routerLink="/shopping-dsp" routerLinkActive="active">💎 Shopping DSP</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary dragon-devour-btn" href="#"
-                            (click)="showComingSoon($event)">👁 Entrar nas Trevas</a>
+                        <a *ngIf="!isLoggedIn" class="nav-link btn btn-primary dragon-devour-btn" routerLink="/login">👁
+                            Entrar nas
+                            Trevas</a>
+                        <div class="d-flex align-items-center" *ngIf="isLoggedIn">
+                            <a class="nav-link btn btn-success dragon-devour-btn me-2" routerLink="/account">👤
+                                Conta</a>
+                            <button class="btn btn-outline-danger" (click)="logout()">Sair</button>
+                        </div>
+
                     </li>
                 </ul>
             </div>
@@ -39,7 +46,7 @@
     </nav>
 </header>
 
-<div class="container">
+<div class=" container">
     <main role="main" class="pb-3">
         <router-outlet></router-outlet>
     </main>

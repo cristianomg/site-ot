@@ -33,6 +33,9 @@ namespace OtServer.Api.Mappings
                 .ForMember(x => x.MagicLevel, o => o.MapFrom(src => src.Player.MagicLevel))
                 .ForMember(x => x.Name, o => o.MapFrom(src => src.Player.Name))
                 .ForMember(x => x.Vocation, o => o.MapFrom(src => ((VocationEnum)src.Player.Vocation).GetDescription()));
+
+
+            CreateMap<Account, AccountInfoViewModel>();
         }
     }
 }
