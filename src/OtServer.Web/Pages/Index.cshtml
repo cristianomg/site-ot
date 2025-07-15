@@ -87,6 +87,63 @@
     </div>
 
     <div class="col-lg-4">
+         <!-- Top Players -->
+        <div class="card">
+            <div class="card-header">
+                <h4>👑 Top Players</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nome</th>
+                                <th>Resets</th>
+                                <th>Level</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var player in Model.Players)
+                            {
+                                <tr>
+                                    <td>
+                                        @{
+                                            if (player.Position == 1)
+                                            {
+                                                <text>🥇</text>
+                                            }
+                                            else if (player.Position == 2)
+                                            {
+                                                <text>🥈</text>
+                                            }
+                                            else if (player.Position == 3)
+                                            {
+                                                <text>🥉</text>
+                                            }
+                                            else
+                                            {
+                                                <text>@player.Position</text>
+                                            }
+                                        }
+                                    </td>
+                                    <td><a href="/Character/@player.Name" class="text-warning" style="text-decoration:underline;">@player.Name</a></td>
+                                    <td class="@(player.Position <= 3 ? "text-warning" : "")">
+                                        <strong>@player.Resets</strong>
+                                    </td>
+                                    <td class="@(player.Position <= 3 ? "text-warning" : "")">
+                                        <strong>@player.Level</strong>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+<div class="text-center">
+                    <a class="btn btn-sm btn-outline-warning" asp-page="/Highscores" asp-route-type="level">👁 Hierarquia Sombria</a>
+                </div>
+            </div>
+        </div>
         <!-- Server Info -->
         <div class="card mb-4">
             <div class="card-header">
@@ -94,11 +151,11 @@
             </div>
             <div class="card-body text-center">
                 <div class="mb-3">
-                    <span class="badge bg-success fs-6 p-2">🟢 ONLINE</span>
+                    @await Component.InvokeAsync("ServerStatus")
                 </div>
                 <div class="row text-center">
                     <div class="col-6">
-                        <h3 class="text-warning glow">127</h3>
+                        @await Component.InvokeAsync("OnlinePlayers")
                         <small>Jogadores Online</small>
                     </div>
                     <div class="col-6">
@@ -138,55 +195,7 @@
             </div>
         </div>
 
-        <!-- Top Players -->
-        <div class="card">
-            <div class="card-header">
-                <h4>👑 Top Players</h4>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-sm">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Nome</th>
-                                <th>Level</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>🥇</td>
-                                <td>Nazgûl Rex</td>
-                                <td class="text-warning"><strong>287</strong></td>
-                            </tr>
-                            <tr>
-                                <td>🥈</td>
-                                <td>Witch-King</td>
-                                <td class="text-warning"><strong>276</strong></td>
-                            </tr>
-                            <tr>
-                                <td>🥉</td>
-                                <td>Mouth of Sauron</td>
-                                <td class="text-warning"><strong>251</strong></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Saruman Dark</td>
-                                <td>234</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Balrog Lord</td>
-                                <td>229</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-<div class="text-center">
-                    <button class="btn btn-sm btn-outline-warning" onclick="alert('Seus inimigos tremerão diante de Mordor! Rankings completos em breve!')">👁 Hierarquia Sombria</button>
-                </div>
-            </div>
-        </div>
+   
     </div>
 </div>
 

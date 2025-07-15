@@ -4,7 +4,7 @@
     {
         public int PlayerId { get; set; }
         public int Id { get; set; }
-        public int Skill { get; set; }
+        public int SkillLevel { get; set; }
         public int Tries { get; set; }
         public virtual Player Player { get; set; }
     }

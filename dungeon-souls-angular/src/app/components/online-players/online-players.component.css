@@ -1,0 +1,10 @@
+/* Estilos específicos para o componente OnlinePlayers */
+.online-players {
+    text-align: center;
+}
+
+.online-count {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff6b47;
+}

@@ -1,0 +1,59 @@
+export interface Player {
+  id: number;
+  name: string;
+  level: number;
+  vocation: number;
+  sex: number;
+  resets: number;
+  experience: number;
+  health: number;
+  healthMax: number;
+  mana: number;
+  manaMax: number;
+  soul: number;
+  soulMax: number;
+  cap: number;
+  magicLevel: number;
+  skillLevel: number;
+  access: number;
+  lastLogin: string;
+  position?: number;
+  guild?: Guild;
+  guildRank?: string;
+  guildNick?: string;
+}
+
+export interface Guild {
+  id: number;
+  guildName: string;
+}
+
+export interface DeathList {
+  id: number;
+  playerId: number;
+  date: string;
+  description: string;
+}
+
+export enum RankingType {
+  Level = 'level',
+  MagicLevel = 'magiclevel',
+  Fist = 'fist',
+  Sword = 'sword',
+  Distance = 'distance',
+  Axe = 'axe',
+  Club = 'club'
+}
+
+export enum VocationEnum {
+  None = 0,
+  Sorcerer = 1,
+  Druid = 2,
+  Paladin = 3,
+  Knight = 4
+}
+
+export enum SexEnum {
+  Male = 0,
+  Female = 1
+} 

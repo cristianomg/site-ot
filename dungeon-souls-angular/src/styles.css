@@ -1,0 +1,941 @@
+/* Reset e Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 14px;
+    height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    font-family: 'Cinzel', 'Georgia', serif;
+    background: linear-gradient(135deg, #232323, #1a1a1a, #111111);
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: #cccccc;
+    position: relative;
+}
+
+/* Background decorativo sombrio de Mordor */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle at 20% 50%, rgba(255, 107, 71, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139, 0, 0, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(25, 25, 25, 0.05) 0%, transparent 50%);
+    z-index: -1;
+}
+
+/* Header das Sombras de Mordor */
+header {
+    background: linear-gradient(135deg, #232323, #1a1a1a, #111111);
+    border-bottom: 3px solid #444444;
+    box-shadow: 0 4px 20px rgba(80, 80, 80, 0.3);
+    position: relative;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #444444, #888888, #444444);
+}
+
+.navbar {
+    background: transparent !important;
+    border: none !important;
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #cccccc !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9), 0 0 10px rgba(80, 80, 80, 0.5);
+    text-decoration: none;
+}
+
+.navbar-brand:hover {
+    color: #eeeeee !important;
+    text-shadow: 2px 2px 8px rgba(180, 180, 180, 0.8), 0 0 15px rgba(120, 120, 120, 0.8);
+}
+
+.navbar-nav .nav-link {
+    color: #cccccc !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 1rem;
+    padding: 0.5rem 1rem !important;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #eeeeee !important;
+    border-color: #888888;
+    background: rgba(200, 200, 200, 0.08);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9), 0 0 8px rgba(180, 180, 180, 0.6);
+}
+
+.navbar-nav .nav-link::before {
+    content: '👁';
+    position: absolute;
+    left: -15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::before {
+    opacity: 1;
+}
+
+/* Container das Trevas de Mordor */
+.container {
+    background: rgba(30, 30, 30, 0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid #444444;
+    border-radius: 10px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(80, 80, 80, 0.2);
+    position: relative;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #444444, #888888, #444444, #222222);
+    border-radius: 12px;
+    z-index: -1;
+    opacity: 0.15;
+}
+
+/* Títulos das Trevas de Sauron */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Cinzel Decorative', cursive;
+    color: #cccccc;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9), 0 0 10px rgba(180, 180, 180, 0.4);
+    margin-bottom: 1.5rem;
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    border-bottom: 2px solid #888888;
+    padding-bottom: 1rem;
+    position: relative;
+}
+
+h1::before,
+h1::after {
+    content: '👁';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: #cccccc;
+}
+
+h1::before {
+    left: 0;
+}
+
+h1::after {
+    right: 0;
+}
+
+/* Cards das Trevas de Mordor */
+.card {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.98), rgba(10, 10, 10, 0.98));
+    border: 2px solid #888888;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(120, 120, 120, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 25px rgba(120, 120, 120, 0.35);
+}
+
+.card-header {
+    background: linear-gradient(135deg, #444444, #888888);
+    color: #000000;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1rem 1.5rem;
+    border-bottom: 2px solid #444444;
+}
+
+.card-body {
+    padding: 1.5rem;
+    color: #cccccc;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Botões das Trevas de Sauron */
+.btn {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #888888;
+    border-radius: 5px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(255, 107, 71, 0.1));
+    color: #888888;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, rgba(255, 107, 71, 0.2), rgba(255, 107, 71, 0.3));
+    color: #888888;
+    border-color: #888888;
+    box-shadow: 0 4px 15px rgba(255, 107, 71, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #444444, #888888);
+    color: #000000;
+    border-color: #888888;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #666666, #aaaaaa);
+    color: #000000;
+    border-color: #aaaaaa;
+    box-shadow: 0 4px 15px rgba(170, 170, 170, 0.4);
+}
+
+/* Tabelas das Trevas */
+.table {
+    background: rgba(0, 0, 0, 0.8);
+    color: #cccccc;
+    border: 1px solid #444444;
+}
+
+.table th {
+    background: linear-gradient(135deg, #444444, #666666);
+    color: #000000;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #888888;
+}
+
+.table td {
+    border-bottom: 1px solid #444444;
+    padding: 0.75rem;
+}
+
+.table tr:hover {
+    background: rgba(255, 107, 71, 0.1);
+}
+
+/* Formulários das Trevas */
+.form-control {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #444444;
+    color: #cccccc;
+    border-radius: 5px;
+}
+
+.form-control:focus {
+    background: rgba(0, 0, 0, 0.9);
+    border-color: #888888;
+    color: #cccccc;
+    box-shadow: 0 0 10px rgba(255, 107, 71, 0.3);
+}
+
+.form-control::placeholder {
+    color: #888888;
+}
+
+/* Footer das Trevas */
+footer {
+    background: linear-gradient(135deg, #232323, #1a1a1a, #111111);
+    border-top: 3px solid #444444;
+    padding: 2rem 0;
+    margin-top: 3rem;
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #444444, #888888, #444444);
+}
+
+footer a {
+    color: #cccccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ff6b47;
+    text-shadow: 0 0 8px rgba(255, 107, 71, 0.5);
+}
+
+/* Divisor Medieval */
+.medieval-divider {
+    height: 4px;
+    background: linear-gradient(90deg, #444444, #888888, #444444);
+    margin: 2rem 0;
+    position: relative;
+}
+
+.medieval-divider::before {
+    content: '👁';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #232323;
+    padding: 0 1rem;
+    font-size: 1.5rem;
+    color: #cccccc;
+}
+
+/* Efeito Glow */
+@keyframes glow {
+
+    0%,
+    100% {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9), 0 0 10px rgba(255, 107, 71, 0.3);
+    }
+
+    50% {
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 107, 71, 0.6);
+    }
+}
+
+.glow {
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    .navbar-nav .nav-link::before {
+        display: none;
+    }
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #232323;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #aaaaaa;
+}
+
+/* Alertas das Trevas */
+.alert {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #444444;
+    border-radius: 5px;
+    color: #cccccc;
+}
+
+.alert-success {
+    border-color: #28a745;
+    color: #28a745;
+}
+
+.alert-warning {
+    border-color: #ffc107;
+    color: #ffc107;
+}
+
+.alert-danger {
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+.alert-info {
+    border-color: #17a2b8;
+    color: #17a2b8;
+}
+
+/* Badges das Trevas */
+.badge {
+    background: linear-gradient(135deg, #444444, #666666);
+    color: #000000;
+    font-weight: bold;
+}
+
+.bg-success {
+    background: linear-gradient(135deg, #28a745, #20c997) !important;
+}
+
+.text-success {
+    color: #28a745 !important;
+}
+
+.text-warning {
+    color: #ffc107 !important;
+}
+
+.text-info {
+    color: #17a2b8 !important;
+}
+
+.text-danger {
+    color: #dc3545 !important;
+}
+
+.border-warning {
+    border-color: #ffc107 !important;
+}
+
+.border-info {
+    border-color: #17a2b8 !important;
+}
+
+.border-success {
+    border-color: #28a745 !important;
+}
+
+.border-danger {
+    border-color: #dc3545 !important;
+}
+
+/* Textos */
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: #cccccc;
+}
+
+.small,
+small {
+    font-size: 0.875rem;
+    color: #888888;
+}
+
+.text-muted {
+    color: #888888 !important;
+}
+
+/* Botão especial do dragão */
+.dragon-devour-btn {
+    background: linear-gradient(135deg, #8b0000, #ff6b47);
+    color: #ffffff;
+    border: 2px solid #ff6b47;
+    position: relative;
+    overflow: hidden;
+}
+
+.dragon-devour-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s;
+}
+
+.dragon-devour-btn::after {
+    content: '🔥';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.dragon-devour-btn:hover::after {
+    opacity: 1;
+    right: 15px;
+}
+
+.dragon-devour-btn:hover {
+    background: linear-gradient(135deg, #ff6b47, #8b0000);
+    color: #ffffff;
+    border-color: #ff6b47;
+    box-shadow: 0 4px 15px rgba(255, 107, 71, 0.6);
+    transform: translateY(-2px);
+}
+
+.dragon-devour-btn:hover .btn-text {
+    transform: translateX(-5px);
+}
+
+@keyframes soulCorruption {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Tabelas responsivas */
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background: rgba(255, 107, 71, 0.05);
+}
+
+.table-hover>tbody>tr:hover {
+    background: rgba(255, 107, 71, 0.1);
+}
+
+.badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.bg-warning {
+    background: linear-gradient(135deg, #ffc107, #ffca2c) !important;
+}
+
+.bg-secondary {
+    background: linear-gradient(135deg, #6c757d, #868e96) !important;
+}
+
+.badge:contains("🥇") {
+    background: linear-gradient(135deg, #ffd700, #ffed4e) !important;
+    color: #000000 !important;
+}
+
+.table th {
+    background: linear-gradient(135deg, #444444, #666666);
+    color: #000000;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #888888;
+    padding: 1rem 0.75rem;
+}
+
+.table td {
+    border-bottom: 1px solid #444444;
+    padding: 0.75rem;
+    vertical-align: middle;
+}
+
+.table tbody tr:first-child {
+    background: rgba(255, 215, 0, 0.1);
+    border-left: 3px solid #ffd700;
+}
+
+/* Paginação das Trevas */
+.pagination-dark .page-link {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(255, 107, 71, 0.1));
+    border: 2px solid #444444;
+    color: #cccccc;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.pagination-dark .page-link:hover {
+    background: linear-gradient(135deg, rgba(255, 107, 71, 0.2), rgba(255, 107, 71, 0.3));
+    color: #cccccc;
+    border-color: #888888;
+    box-shadow: 0 4px 15px rgba(255, 107, 71, 0.4);
+}
+
+.pagination-dark .page-item.active .page-link {
+    background: linear-gradient(135deg, #ff6b47, #8b0000);
+    border-color: #ff6b47;
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(255, 107, 71, 0.6);
+}
+
+.pagination-dark .page-item.disabled .page-link {
+    background: rgba(0, 0, 0, 0.5);
+    border-color: #333333;
+    color: #666666;
+}
+
+.pagination-dark .page-item.disabled .page-link:hover {
+    background: rgba(0, 0, 0, 0.5);
+    border-color: #333333;
+    color: #666666;
+    box-shadow: none;
+}
+
+.pagination-dark .page-item.active .page-link strong {
+    font-weight: bold;
+}
+
+@media (max-width: 576px) {
+    .pagination-dark .page-link {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+    }
+
+    .pagination-dark .page-item.active .page-link {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* Sidebar de Rankings */
+.ranking-sidebar {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.98), rgba(10, 10, 10, 0.98));
+    border: 2px solid #888888;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(120, 120, 120, 0.3);
+    animation: slideInLeft 0.5s ease-out;
+}
+
+.ranking-sidebar .card-header {
+    background: linear-gradient(135deg, #444444, #888888);
+    color: #000000;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1rem 1.5rem;
+    border-bottom: 2px solid #444444;
+}
+
+.ranking-sidebar .card-header h5 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+.ranking-sidebar .list-group-item {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #444444;
+    color: #cccccc;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.ranking-sidebar .list-group-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(135deg, #444444, #888888);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.ranking-sidebar .list-group-item:hover::before {
+    opacity: 1;
+}
+
+.ranking-sidebar .list-group-item:hover {
+    background: rgba(255, 107, 71, 0.1);
+    border-color: #888888;
+    transform: translateX(5px);
+}
+
+.ranking-sidebar .list-group-item.active {
+    background: linear-gradient(135deg, rgba(255, 107, 71, 0.2), rgba(255, 107, 71, 0.3));
+    border-color: #ff6b47;
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(255, 107, 71, 0.4);
+}
+
+.ranking-sidebar .list-group-item.active .fw-bold {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.ranking-sidebar .list-group-item.active small {
+    color: #cccccc;
+}
+
+.ranking-sidebar .list-group-item span {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+    display: inline-block;
+}
+
+.ranking-sidebar .list-group-item .fw-bold {
+    color: #cccccc;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.ranking-sidebar .list-group-item small {
+    color: #888888;
+    font-size: 0.8rem;
+}
+
+.ranking-sidebar {
+    position: sticky;
+    top: 2rem;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 991px) {
+    .ranking-sidebar {
+        position: static;
+        margin-bottom: 2rem;
+    }
+
+    .ranking-sidebar .list-group-item {
+        padding: 1rem;
+    }
+
+    .ranking-sidebar .list-group-item .fw-bold {
+        font-size: 1rem;
+    }
+
+    .ranking-sidebar .list-group-item small {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .ranking-sidebar .card-header {
+        padding: 0.75rem 1rem;
+    }
+
+    .ranking-sidebar .card-header h5 {
+        font-size: 1rem;
+    }
+}
+
+.list-group-item {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #444444;
+    color: #cccccc;
+    transition: all 0.3s ease;
+}
+
+.ranking-sidebar {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.98), rgba(10, 10, 10, 0.98));
+    border: 2px solid #888888;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(120, 120, 120, 0.3);
+    animation: slideInLeft 0.5s ease-out;
+}
+
+.ranking-sidebar .card-header {
+    background: linear-gradient(135deg, #444444, #888888);
+    color: #000000;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1rem 1.5rem;
+    border-bottom: 2px solid #444444;
+}
+
+.ranking-sidebar .card-header h5 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+.ranking-sidebar .list-group-item {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #444444;
+    color: #cccccc;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.ranking-sidebar .list-group-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(135deg, #444444, #888888);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.ranking-sidebar .list-group-item:hover::before {
+    opacity: 1;
+}
+
+.ranking-sidebar .list-group-item:hover {
+    background: rgba(255, 107, 71, 0.1);
+    border-color: #888888;
+    transform: translateX(5px);
+}
+
+.ranking-sidebar .list-group-item.active {
+    background: linear-gradient(135deg, rgba(255, 107, 71, 0.2), rgba(255, 107, 71, 0.3));
+    border-color: #ff6b47;
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(255, 107, 71, 0.4);
+}
+
+.ranking-sidebar .list-group-item.active .fw-bold {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.ranking-sidebar .list-group-item.active small {
+    color: #cccccc;
+}
+
+.ranking-sidebar .list-group-item span {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+    display: inline-block;
+}
+
+.ranking-sidebar .list-group-item .fw-bold {
+    color: #cccccc;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.ranking-sidebar .list-group-item small {
+    color: #888888;
+    font-size: 0.8rem;
+}
+
+.ranking-sidebar {
+    position: sticky;
+    top: 2rem;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 991px) {
+    .ranking-sidebar {
+        position: static;
+        margin-bottom: 2rem;
+    }
+
+    .ranking-sidebar .list-group-item {
+        padding: 1rem;
+    }
+
+    .ranking-sidebar .list-group-item .fw-bold {
+        font-size: 1rem;
+    }
+
+    .ranking-sidebar .list-group-item small {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .ranking-sidebar .card-header {
+        padding: 0.75rem 1rem;
+    }
+
+    .ranking-sidebar .card-header h5 {
+        font-size: 1rem;
+    }
+}

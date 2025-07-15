@@ -6,7 +6,7 @@
     {
         RankingType.Level => "⭐ Level & Resets",
         RankingType.MagicLevel => "🔮 Magic Level", 
-        RankingType.First => "🛡️ First Fighting",
+        RankingType.Fist => "🛡️ Fist Fighting",
         RankingType.Sword => "⚔️ Sword Fighting",
         RankingType.Distance => "🏹 Distance Fighting", 
         RankingType.Axe => "🪓 Axe Fighting",
@@ -49,11 +49,11 @@
                             </div>
                         </div>
                     </a>
-                    <a href="?type=first&page=1" class="list-group-item @(Model.CurrentRankingType == RankingType.First ? "active" : "")">
+                    <a href="?type=fist&page=1" class="list-group-item @(Model.CurrentRankingType == RankingType.Fist ? "active" : "")">
                         <div class="d-flex align-items-center">
                             <span class="me-2">🛡️</span>
                             <div>
-                                <div class="fw-bold">First Fighting</div>
+                                <div class="fw-bold">Fist Fighting</div>
                                 <small class="text-muted">Combate sem armas</small>
                             </div>
                         </div>
@@ -117,39 +117,26 @@
                 <div class="table-responsive">
                     <table class="table table-striped table-hover mb-0">
                         <thead>
-                            <tr>
-                                <th style="width: 60px; text-align: center;">
-                                    <span class="text-warning">#</span>
-                                </th>
-                                <th style="width: 200px;">
-                                    <span class="text-warning">👤 Nome</span>
-                                </th>
-                                <th style="width: 150px;">
-                                    <span class="text-warning">🎭 Vocação</span>
-                                </th>
-                                @if (Model.CurrentRankingType == RankingType.Level)
-                                {
-                                    <th style="width: 100px; text-align: center;">
-                                        <span class="text-warning">🔄 Resets</span>
+                            @if (Model.CurrentRankingType == RankingType.MagicLevel || 
+                              Model.CurrentRankingType == RankingType.Fist ||
+                              Model.CurrentRankingType == RankingType.Sword ||
+                              Model.CurrentRankingType == RankingType.Distance ||
+                              Model.CurrentRankingType == RankingType.Axe ||
+                              Model.CurrentRankingType == RankingType.Club)
+                            {
+                                <tr>
+                                    <th style="width: 60px; text-align: center;">
+                                        <span class="text-warning">#</span>
                                     </th>
-                                    <th style="width: 100px; text-align: center;">
-                                        <span class="text-warning">⭐ Level</span>
-                                    </th>
-                                    <th style="text-align: right;">
-                                        <span class="text-warning">💎 Experience</span>
-                                    </th>
-                                }
-                                else
-                                {
-                                    <th style="width: 100px; text-align: center;">
-                                        <span class="text-warning">⭐ Level</span>
+                                    <th style="width: 200px;">
+                                        <span class="text-warning">👤 Nome</span>
                                     </th>
                                     <th style="width: 120px; text-align: center;">
                                         @{
                                             var skillHeader = Model.CurrentRankingType switch 
                                             {
                                                 RankingType.MagicLevel => "🔮 Magic Level",
-                                                RankingType.First => "🛡️ First Skill",
+                                                RankingType.Fist => "🛡️ Fist Skill",
                                                 RankingType.Sword => "⚔️ Sword Skill", 
                                                 RankingType.Distance => "🏹 Distance Skill",
                                                 RankingType.Axe => "🪓 Axe Skill",
@@ -159,108 +146,190 @@
                                         }
                                         <span class="text-warning">@skillHeader</span>
                                     </th>
-                                    <th style="text-align: right;">
-                                        <span class="text-warning">💎 Experience</span>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <th style="width: 60px; text-align: center;">
+                                        <span class="text-warning">#</span>
                                     </th>
-                                }
-                            </tr>
+                                    <th style="width: 200px;">
+                                        <span class="text-warning">👤 Nome</span>
+                                    </th>
+                                    <th style="width: 150px;">
+                                        <span class="text-warning">🎭 Vocação</span>
+                                    </th>
+                                    @if (Model.CurrentRankingType == RankingType.Level)
+                                    {
+                                        <th style="width: 100px; text-align: center;">
+                                            <span class="text-warning">🔄 Resets</span>
+                                        </th>
+                                        <th style="width: 100px; text-align: center;">
+                                            <span class="text-warning">⭐ Level</span>
+                                        </th>
+                                        <th style="text-align: right;">
+                                            <span class="text-warning">💎 Experience</span>
+                                        </th>
+                                    }
+                                </tr>
+                            }
                         </thead>
                         <tbody>
                             @foreach (var player in Model.Players)
                             {
-                                <tr>
-                                    <td style="text-align: center;">
-                                        @if (player.Position == 1)
-                                        {
-                                            <span class="badge bg-warning text-dark">🥇 @player.Position</span>
-                                        }
-                                        else if (player.Position == 2)
-                                        {
-                                            <span class="badge bg-secondary">🥈 @player.Position</span>
-                                        }
-                                        else if (player.Position == 3)
-                                        {
-                                            <span class="badge bg-warning text-dark" style="background: #cd7f32 !important;">🥉 @player.Position</span>
-                                        }
-                                        else
-                                        {
-                                            <span class="text-muted">@player.Position</span>
-                                        }
-                                    </td>
-                                    <td>
-                                        <strong class="text-warning">@player.Name</strong>
-                                    </td>
-                                    <td>
-                                        @switch (player.Vocation)
-                                        {
-                                            case "Elite Knight":
-                                                <span class="text-info">⚔️ @player.Vocation</span>
-                                                break;
-                                            case "Master Sorcerer":
-                                                <span class="text-danger">🔥 @player.Vocation</span>
-                                                break;
-                                            case "Elder Druid":
-                                                <span class="text-success">🌿 @player.Vocation</span>
-                                                break;
-                                            case "Royal Paladin":
-                                                <span class="text-warning">🏹 @player.Vocation</span>
-                                                break;
-                                            default:
-                                                <span>@player.Vocation</span>
-                                                break;
-                                        }
-                                    </td>
-                                    @if (Model.CurrentRankingType == RankingType.Level)
-                                    {
+                                if (Model.CurrentRankingType == RankingType.MagicLevel || 
+                                    Model.CurrentRankingType == RankingType.Fist ||
+                                    Model.CurrentRankingType == RankingType.Sword ||
+                                    Model.CurrentRankingType == RankingType.Distance ||
+                                    Model.CurrentRankingType == RankingType.Axe ||
+                                    Model.CurrentRankingType == RankingType.Club)
+                                {
+                                    <tr>
                                         <td style="text-align: center;">
-                                            @if (player.Resets >= 10)
+                                            @if (player.Position == 1)
                                             {
-                                                <span class="badge bg-danger">💀 @player.Resets</span>
+                                                <span class="badge bg-warning text-dark">🥇 @player.Position</span>
                                             }
-                                            else if (player.Resets >= 5)
+                                            else if (player.Position == 2)
                                             {
-                                                <span class="badge bg-warning text-dark">🔥 @player.Resets</span>
+                                                <span class="badge bg-secondary">🥈 @player.Position</span>
+                                            }
+                                            else if (player.Position == 3)
+                                            {
+                                                <span class="badge bg-warning text-dark" style="background: #cd7f32 !important;">🥉 @player.Position</span>
                                             }
                                             else
                                             {
-                                                <span class="badge bg-secondary">⚡ @player.Resets</span>
+                                                <span class="text-muted">@player.Position</span>
                                             }
                                         </td>
-                                        <td style="text-align: center;">
-                                            <strong class="text-warning">@player.Level</strong>
-                                        </td>
-                                        <td style="text-align: right;">
-                                            <span class="text-success">@player.Experience.ToString("N0")</span>
-                                        </td>
-                                    }
-                                    else
-                                    {
-                                        <td style="text-align: center;">
-                                            <strong class="text-warning">@player.Level</strong>
+                                        <td>
+                                            <a href="/Character/@player.Name" class="text-warning" style="text-decoration:underline;">@player.Name</a>
                                         </td>
                                         <td style="text-align: center;">
                                             @{
-                                                var skillValue = Model.CurrentRankingType switch 
+                                                var skillValue = 0;
+                                                if (Model.CurrentRankingType == RankingType.MagicLevel)
                                                 {
-                                                    RankingType.MagicLevel => player.MagicLevel,
-                                                    RankingType.First => player.FirstSkill,
-                                                    RankingType.Sword => player.SwordSkill,
-                                                    RankingType.Distance => player.DistanceSkill,
-                                                    RankingType.Axe => player.AxeSkill,
-                                                    RankingType.Club => player.ClubSkill,
-                                                    _ => 0
-                                                };
+                                                    skillValue = player.MagicLevel;
+                                                }else {
+                                                    skillValue = player.SkillLevel;
+                                                }
+
                                                 var skillColor = skillValue >= 130 ? "text-danger" : 
                                                                skillValue >= 100 ? "text-warning" : 
                                                                skillValue >= 70 ? "text-info" : "text-muted";
                                             }
                                             <strong class="@skillColor">@skillValue</strong>
                                         </td>
-                                        <td style="text-align: right;">
-                                            <span class="text-success">@player.Experience.ToString("N0")</span>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td style="text-align: center;">
+                                            @if (player.Position == 1)
+                                            {
+                                                <span class="badge bg-warning text-dark">🥇 @player.Position</span>
+                                            }
+                                            else if (player.Position == 2)
+                                            {
+                                                <span class="badge bg-secondary">🥈 @player.Position</span>
+                                            }
+                                            else if (player.Position == 3)
+                                            {
+                                                <span class="badge bg-warning text-dark" style="background: #cd7f32 !important;">🥉 @player.Position</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-muted">@player.Position</span>
+                                            }
                                         </td>
-                                    }
-                                </tr>
+                                        <td>
+                                            <a href="/Character/@player.Name" class="text-warning" style="text-decoration:underline;">@player.Name</a>
+                                        </td>
+                                        <td>
+                                            @switch (player.Vocation)
+                                            {
+                                                case "Knight":
+                                                    <span class="text-info">⚔️ @player.Vocation</span>
+                                                    break;
+                                                case "Sorcerer":
+                                                    <span class="text-danger">🔥 @player.Vocation</span>
+                                                    break;
+                                                case "Druid":
+                                                    <span class="text-success">🌿 @player.Vocation</span>
+                                                    break;
+                                                case "Archer":
+                                                    <span class="text-warning">🏹 @player.Vocation</span>
+                                                    break;
+                                                case "Master Sorcerer":
+                                                    <span class="text-danger">🔥 @player.Vocation</span>
+                                                    break;
+                                                case "Elder Druid":
+                                                    <span class="text-success">🌿 @player.Vocation</span>
+                                                    break;
+                                                case "Royal Archer":
+                                                    <span class="text-warning">🏹 @player.Vocation</span>
+                                                    break;
+                                                case "Elite Knight":
+                                                    <span class="text-info">⚔️ @player.Vocation</span>
+                                                    break;
+                                                case "Wyzard":
+                                                    <span class="text-danger">🔥 @player.Vocation</span>
+                                                    break;
+                                                case "Cleric":
+                                                    <span class="text-success">🌿 @player.Vocation</span>
+                                                    break;
+                                                case "Ranger":
+                                                    <span class="text-warning">🏹 @player.Vocation</span>
+                                                    break;
+                                                case "Slayer":
+                                                    <span class="text-info">⚔️ @player.Vocation</span>
+                                                    break;
+                                                case "Dark Wyzard":
+                                                    <span class="text-danger">🔥 @player.Vocation</span>
+                                                    break;
+                                                case "Elemental Cleric":
+                                                    <span class="text-success">🌿 @player.Vocation</span>
+                                                    break;
+                                                case "Elven Ranger":
+                                                    <span class="text-warning">🏹 @player.Vocation</span>
+                                                    break;
+                                                case "Dragon Slayer":
+                                                    <span class="text-info">⚔️ @player.Vocation</span>
+                                                    break;
+                                                default:
+                                                    <span>@player.Vocation</span>
+                                                    break;
+                                            }
+                                        </td>
+                                        @if (Model.CurrentRankingType == RankingType.Level)
+                                        {
+                                            <td style="text-align: center;">
+                                                @if (player.Resets >= 10)
+                                                {
+                                                    <span class="badge bg-danger">💀 @player.Resets</span>
+                                                }
+                                                else if (player.Resets >= 5)
+                                                {
+                                                    <span class="badge bg-warning text-dark">🔥 @player.Resets</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-secondary">⚡ @player.Resets</span>
+                                                }
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <strong class="text-warning">@player.Level</strong>
+                                            </td>
+                                            <td style="text-align: right;">
+                                                <span class="text-success">@player.Experience.ToString("N0")</span>
+                                            </td>
+                                        }
+                                    </tr>
+                                }
                             }
                         </tbody>
                     </table>

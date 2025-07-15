@@ -2,8 +2,9 @@
 
 namespace OtServer.Domain.Enums
 {
-    public enum VocationEnum
+    public enum VocationEnum : int
     {
+        [Description("None")]
         None = 0,
         [Description("Sorcerer")]
         Sorcerer = 1,

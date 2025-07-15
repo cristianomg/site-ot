@@ -8,11 +8,12 @@
 
   <ItemGroup>
 	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
+	  <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\OtServer.Domain\OtServer.Domain.csproj" />
-    <ProjectReference Include="..\src\OtServer.Domain\OtServer.Domain.csproj" />
   </ItemGroup>
 
 </Project>

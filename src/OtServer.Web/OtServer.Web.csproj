@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OtServer.Infrasctruture\OtServer.Infrasctruture.csproj" />
+  </ItemGroup>
+
 </Project>

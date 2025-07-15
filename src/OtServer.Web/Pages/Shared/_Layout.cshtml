@@ -32,7 +32,7 @@
                             <a class="nav-link" asp-area="" asp-page="/Highscores">⚔️ Highscores</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="alert('Em breve!')">👥 Players Online</a>
+                            <a class="nav-link" asp-area="" asp-page="/PlayersOnline">👥 Players Online</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#" onclick="alert('Em breve!')">🔥 Last Kills</a>
@@ -71,8 +71,8 @@
                 </div>
                 <div class="col-md-4">
                     <h5>🔥 Status das Trevas</h5>
-                    <p class="text-danger">🔴 Torre Negra Ativa</p>
-                    <p>Servos: <strong class="glow">127</strong></p>
+                    @await Component.InvokeAsync("ServerStatus")
+                    Jogadores Online: @await Component.InvokeAsync("OnlinePlayers")
                 </div>
                 <div class="col-md-4">
                     <h5>⚡ Portais Sombrios</h5>
@@ -94,6 +94,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/server-status.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

@@ -1,0 +1,23 @@
+/* Estilos específicos para o componente Character */
+.character-info {
+    margin-bottom: 1rem;
+}
+
+.character-stats {
+    font-weight: bold;
+}
+
+.guild-info {
+    border-left: 3px solid #ff6b47;
+    padding-left: 1rem;
+}
+
+.death-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.other-characters {
+    max-height: 200px;
+    overflow-y: auto;
+}

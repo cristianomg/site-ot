@@ -1,0 +1,131 @@
+<div class="container mt-4">
+    <h1 class="glow mb-0">{{player?.name || 'Personagem Desconhecido'}}</h1>
+
+    <div class="alert alert-danger" *ngIf="!player">
+        Personagem não encontrado.
+    </div>
+
+    <div class="row" *ngIf="player">
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-header">Informações Básicas</div>
+                <div class="card-body">
+                    <div class="row mb-2">
+                        <div class="col-6"><strong>Nome:</strong></div>
+                        <div class="col-6">{{player.name}}</div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-6"><strong>Level:</strong></div>
+                        <div class="col-6">{{player.level}}</div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-6"><strong>Sexo:</strong></div>
+                        <div class="col-6">{{getSexName(player.sex)}}</div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-6"><strong>Vocação:</strong></div>
+                        <div class="col-6">{{getVocationName(player.vocation)}}</div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-6"><strong>Resets:</strong></div>
+                        <div class="col-6">{{player.resets}}</div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-6"><strong>Status:</strong></div>
+                        <div class="col-6">{{player.access > 0 ? 'STAFF' : 'Player'}}</div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-6"><strong>Último Login:</strong></div>
+                        <div class="col-6">{{formatDate(player.lastLogin)}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header">Guilda</div>
+                <div class="card-body">
+                    <div *ngIf="player.guild">
+                        <div class="row mb-2">
+                            <div class="col-6"><strong>Guilda:</strong></div>
+                            <div class="col-6">{{player.guild.guildName}}</div>
+                        </div>
+                        <div class="row mb-2" *ngIf="player.guildRank">
+                            <div class="col-6"><strong>Rank:</strong></div>
+                            <div class="col-6">{{player.guildRank}}</div>
+                        </div>
+                        <div class="row mb-2" *ngIf="player.guildNick">
+                            <div class="col-6"><strong>Nick:</strong></div>
+                            <div class="col-6">{{player.guildNick}}</div>
+                        </div>
+                    </div>
+                    <span class="text-muted" *ngIf="!player.guild">O player não participa de nenhuma guild.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-header">Atributos</div>
+                <div class="card-body">
+                    <div class="row mb-2">
+                        <div class="col-6"><strong>Vida:</strong></div>
+                        <div class="col-6">{{player.health}}/{{player.healthMax}}</div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-6"><strong>Mana:</strong></div>
+                        <div class="col-6">{{player.mana}}/{{player.manaMax}}</div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-6"><strong>Soul:</strong></div>
+                        <div class="col-6">{{player.soul}}/{{player.soulMax}}</div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-6"><strong>Capacidade:</strong></div>
+                        <div class="col-6">{{player.cap}}</div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-6"><strong>Experiência:</strong></div>
+                        <div class="col-6">{{player.experience | number}}</div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-6"><strong>Magic Level:</strong></div>
+                        <div class="col-6">{{player.magicLevel}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="player">
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-header">Mortes Recentes</div>
+                <div class="card-body">
+                    <ul class="list-group" *ngIf="deaths && deaths.length > 0">
+                        <li class="list-group-item" *ngFor="let death of deaths">
+                            <span class="text-muted">{{formatDate(death.date)}}</span> - {{death.description}}
+                        </li>
+                    </ul>
+                    <span class="text-muted" *ngIf="!deaths || deaths.length === 0">Nenhuma morte recente
+                        encontrada.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-header">Outros Personagens na Conta</div>
+                <div class="card-body">
+                    <ul class="list-group" *ngIf="otherCharacters && otherCharacters.length > 0">
+                        <li class="list-group-item" *ngFor="let char of otherCharacters">
+                            <a [routerLink]="['/character', char.name]" class="fw-bold">{{char.name}}</a> - Level
+                            {{char.level}} - {{getVocationName(char.vocation)}}
+                        </li>
+                    </ul>
+                    <span class="text-muted" *ngIf="!otherCharacters || otherCharacters.length === 0">Nenhum outro
+                        personagem encontrado.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

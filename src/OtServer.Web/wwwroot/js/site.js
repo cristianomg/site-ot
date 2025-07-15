@@ -362,23 +362,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Inicializar efeito de corrupção da alma
     initSoulCorruptionEffect();
 
-    // Contador dinâmico de jogadores online
-    function updatePlayerCount() {
-        const playerCountElements = document.querySelectorAll('.glow');
-        playerCountElements.forEach(element => {
-            if (element.textContent && element.textContent.match(/^\d+$/)) {
-                let currentCount = parseInt(element.textContent);
-                // Variar entre +/- 3 jogadores
-                let change = Math.floor(Math.random() * 7) - 3;
-                let newCount = Math.max(120, Math.min(135, currentCount + change));
-                element.textContent = newCount;
-            }
-        });
-    }
-
-    // Atualizar contador a cada 15 segundos
-    setInterval(updatePlayerCount, 15000);
-
     // Easter egg: Konami Code medieval
     let konamiCode = [];
     const konamiSequence = [
@@ -638,18 +621,18 @@ function animateCounters() {
 
 function initPaginationEffects() {
     const paginationLinks = document.querySelectorAll('.pagination-dark .page-link');
-    
+
     paginationLinks.forEach(link => {
         // Efeito de partículas nos botões de navegação
-        link.addEventListener('mouseenter', function() {
+        link.addEventListener('mouseenter', function () {
             if (!this.parentElement.classList.contains('disabled')) {
                 createPaginationParticles(this);
             }
         });
 
         // Efeito de loading ao clicar
-        link.addEventListener('click', function(e) {
-            if (!this.parentElement.classList.contains('disabled') && 
+        link.addEventListener('click', function (e) {
+            if (!this.parentElement.classList.contains('disabled') &&
                 !this.parentElement.classList.contains('active')) {
                 createPageTransition();
             }
@@ -660,7 +643,7 @@ function initPaginationEffects() {
 function createPaginationParticles(element) {
     const rect = element.getBoundingClientRect();
     const particles = ['⚡', '💀', '🔥', '👁'];
-    
+
     for (let i = 0; i < 4; i++) {
         setTimeout(() => {
             const particle = document.createElement('div');
@@ -672,18 +655,18 @@ function createPaginationParticles(element) {
             particle.style.pointerEvents = 'none';
             particle.textContent = particles[Math.floor(Math.random() * particles.length)];
             particle.style.filter = 'drop-shadow(0 0 6px #ff6b47)';
-            
+
             document.body.appendChild(particle);
 
             // Animar partícula de paginação
             particle.animate([
-                { 
-                    transform: 'scale(0) rotate(0deg)', 
+                {
+                    transform: 'scale(0) rotate(0deg)',
                     opacity: 1,
                     filter: 'drop-shadow(0 0 6px #ff6b47)'
                 },
-                { 
-                    transform: 'scale(1.2) rotate(180deg) translateY(-25px)', 
+                {
+                    transform: 'scale(1.2) rotate(180deg) translateY(-25px)',
                     opacity: 0,
                     filter: 'drop-shadow(0 0 12px #ff4500)'
                 }
@@ -725,7 +708,7 @@ function createPageTransition() {
             </div>
         </div>
     `;
-    
+
     // Adicionar animação de loading
     const style = document.createElement('style');
     style.textContent = `
@@ -735,14 +718,14 @@ function createPageTransition() {
         }
     `;
     document.head.appendChild(style);
-    
+
     document.body.appendChild(overlay);
-    
+
     // Mostrar overlay
     setTimeout(() => {
         overlay.style.opacity = '1';
     }, 10);
-    
+
     // Remover overlay após 1 segundo (simula carregamento)
     setTimeout(() => {
         overlay.style.opacity = '0';
